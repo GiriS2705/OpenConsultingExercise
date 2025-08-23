@@ -1,0 +1,19 @@
+# docker-compose.yml
+version: "3.8"
+
+services:
+  airflow:
+    image: apache/airflow:2.9.2
+    container_name: customer-analytics-airflow
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__API__AUTH_BACKEND=airflow.api.auth.backend.basic_auth
+      - _PIP_ADDITIONAL_REQUIREMENTS=apache-airflow-providers-snowflake dbt-core
+      - DQ_FAIL_ON_ISSUE=true  # toggle to 'false' to only warn
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./sql:/opt/airflow/dags/sql
+      - ./dbt:/opt/airflow/dags/dbt
+    ports:
+      - "8080:8080"
+    command: bash -c "airflow db init && airflow users create --username admin --password admin --firstname a --lastname a --role Admin --email admin@example.com || true && airflow webserver & airflow scheduler"

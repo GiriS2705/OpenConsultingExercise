@@ -1,0 +1,25 @@
+# dbt/dbt_project.yml
+name: 'customer_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'customer_analytics'
+
+model-paths: ['models']
+macro-paths: ['macros']
+
+models:
+  customer_analytics:
+    +materialized: view
+    staging:
+      +schema: RAW_STG
+      +materialized: view
+    dim:
+      +schema: ANALYTICS
+      +materialized: view
+    fact:
+      +schema: ANALYTICS
+      +materialized: view
+    mart:
+      +schema: ANALYTICS
+      +materialized: table

@@ -1,0 +1,53 @@
+# dbt/models/schema.yml
+version: 2
+
+sources:
+  - name: raw
+    database: ANALYTICS
+    schema: RAW
+    tables:
+      - name: CUSTOMERS
+      - name: PRODUCTS
+      - name: ORDERS
+      - name: DATE_DIM
+
+  - name: analytics
+    database: ANALYTICS
+    schema: PUBLIC
+    tables:
+      - name: DIM_CUSTOMERS
+      - name: DIM_PRODUCTS
+      - name: DIM_DATE
+      - name: FACT_ORDERS
+
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+      - name: email
+        tests: [not_null]
+  - name: stg_products
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests: [not_null, unique]
+  - name: dim_customers
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+  - name: dim_products
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+  - name: dim_date
+    columns:
+      - name: date_id
+        tests: [not_null, unique]
+  - name: fact_orders
+    columns:
+      - name: order_id
+        tests: [not_null, unique]
