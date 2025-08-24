@@ -8,3 +8,9 @@ The diagram below illustrates how raw data flows into Snowflake, is transformed 
 - **DBT Staging → Dim/Fact → Marts** layers  
 - **Airflow** orchestrates ingestion, DBT runs, and advanced data quality checks  
 - **Fact_Orders** joins with **Dim_Customers**, **Dim_Products**, and **Dim_Date** (Star Schema)
+
+
+## Hybrid Data Ingestion Strategy (Visualization)
+
+![Hybrid Data Ingestion Strategy](hybrid_ingestion_strategy.png)
+
