@@ -119,5 +119,3 @@ cd dbt && dbt run && dbt test
 # Airflow (mount repo at /opt/airflow/dags)
 airflow dags trigger customer_analytics_pipeline
 ```
-
-**Share** your private GitHub repo with **@OpenConsulting**.
