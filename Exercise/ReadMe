@@ -1,1 +1,3 @@
+# After generating the diagram with matplotlib
+plt.savefig("docs/pipeline_diagram.png", dpi=300, bbox_inches="tight")
 
