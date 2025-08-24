@@ -1,3 +1,8 @@
+# After generating the diagram with matplotlib
+plt.savefig("docs/pipeline_diagram.png", dpi=300, bbox_inches="tight")
+
+
+
 ## Customer Analytics Data Pipeline (Conceptual)
 
 The diagram below illustrates how raw data flows into Snowflake, is transformed with DBT, and orchestrated by Airflow into a star schema for analytics:
